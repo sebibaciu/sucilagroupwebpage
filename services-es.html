@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUCILA GROUP | Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            dark: '#0a0a0a',
+                            panel: '#121212',
+                            border: '#27272a'
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { background-color: #050505; color: #e4e4e7; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index-es.html" class="flex items-center gap-2">
+                <img src="https://i.ibb.co/FbnbJNck/2logo.png" alt="SUCILA GROUP" class="h-10 md:h-12 w-auto">
+            </a>
+            
+            <div class="hidden md:flex gap-12 text-sm font-medium tracking-wide uppercase items-center">
+                <a href="index-es.html" data-nav-link class="hover:text-brand-gold transition-colors">Inicio</a>
+                <a href="projects-es.html" data-nav-link class="hover:text-brand-gold transition-colors">Proyectos</a>
+                <a href="services-es.html" data-nav-link class="text-brand-gold">Servicios</a>
+                <a href="contact-es.html" data-nav-link class="hover:text-brand-gold transition-colors">Contacto</a>
+                
+                <div class="flex items-center gap-2 ml-8 pl-8 border-l border-zinc-700">
+                    <a href="services.html" title="English" class="px-2 py-1 rounded text-sm hover:bg-white/20 transition-all">🇺🇸</a>
+                    <span class="px-2 py-1 rounded text-sm bg-white/20">🇪🇸</span>
+                    <a href="services-de.html" title="Deutsch" class="px-2 py-1 rounded text-sm hover:bg-white/20 transition-all">🇩🇪</a>
+                </div>
+            </div>
+            
+            <button data-menu-toggle class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div data-mobile-menu class="hidden fixed inset-0 top-20 bg-black z-40 p-6 flex flex-col gap-8 md:hidden">
+            <a href="index-es.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">Inicio</a>
+            <a href="projects-es.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">Proyectos</a>
+            <a href="services-es.html" data-nav-link class="text-3xl font-display font-bold text-brand-gold">Servicios</a>
+            <a href="contact-es.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">Contacto</a>
+            
+            <div class="mt-6 pt-6 border-t border-zinc-700 flex gap-3">
+                <a href="services.html" title="English" class="px-3 py-2 rounded text-lg hover:bg-white/20 transition-all">🇺🇸</a>
+                <span class="px-3 py-2 rounded text-lg bg-white/20">🇪🇸</span>
+                <a href="services-de.html" title="Deutsch" class="px-3 py-2 rounded text-lg hover:bg-white/20 transition-all">🇩🇪</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="font-display text-5xl md:text-7xl text-white mb-20">Nuestros Servicios</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border border-zinc-800 bg-zinc-900 p-8">
+                    <h3 class="font-display text-2xl text-white mb-4">Construcción Residencial</h3>
+                    <p class="text-zinc-400 mb-4">Desarrollo de villas de lujo llave en mano desde cimientos hasta la entrega final. Nos encargamos de cada detalle con precisión y experiencia.</p>
+                    <ul class="text-zinc-500 text-sm space-y-2">
+                        <li>✓ Gestión completa del proyecto</li>
+                        <li>✓ Ingeniería estructural</li>
+                        <li>✓ Adquisición de materiales premium</li>
+                        <li>✓ Garantía de calidad</li>
+                    </ul>
+                </div>
+                
+                <div class="border border-zinc-800 bg-zinc-900 p-8">
+                    <h3 class="font-display text-2xl text-white mb-4">Diseño Arquitectónico</h3>
+                    <p class="text-zinc-400 mb-4">De bocetos conceptuales a visualización BIM y documentos de construcción.</p>
+                    <ul class="text-zinc-500 text-sm space-y-2">
+                        <li>✓ Diseño conceptual</li>
+                        <li>✓ Visualización 3D</li>
+                        <li>✓ Planos técnicos</li>
+                        <li>✓ Cumplimiento normativo</li>
+                    </ul>
+                </div>
+                
+                <div class="border border-zinc-800 bg-zinc-900 p-8">
+                    <h3 class="font-display text-2xl text-white mb-4">Gestión de Proyectos</h3>
+                    <p class="text-zinc-400 mb-4">Supervisión completa y coordinación desde la planificación hasta la finalización.</p>
+                    <ul class="text-zinc-500 text-sm space-y-2">
+                        <li>✓ Gestión de calendario</li>
+                        <li>✓ Control de presupuesto</li>
+                        <li>✓ Coordinación de contratistas</li>
+                        <li>✓ Gestión de riesgos</li>
+                    </ul>
+                </div>
+                
+                <div class="border border-zinc-800 bg-zinc-900 p-8">
+                    <h3 class="font-display text-2xl text-white mb-4">Diseño de Interiores</h3>
+                    <p class="text-zinc-400 mb-4">Soluciones de interiores seleccionadas que combinan funcionalidad con excelencia estética.</p>
+                    <ul class="text-zinc-500 text-sm space-y-2">
+                        <li>✓ Planificación del espacio</li>
+                        <li>✓ Selección de materiales</li>
+                        <li>✓ Muebles personalizados</li>
+                        <li>✓ Diseño de iluminación</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-panel border-t border-brand-border py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center text-zinc-500 text-sm">
+            <p>© 2025 SUCILA GROUP. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/nav-simple.js"></script>
+</body>
+</html>

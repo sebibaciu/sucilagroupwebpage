@@ -4,18 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUCILA GROUP | Building & Innovation</title>
-    
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Syne (Headings) and Manrope (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -36,47 +25,362 @@
                             border: '#27272a'
                         }
                     },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #27272a 1px, transparent 1px), linear-gradient(to bottom, #27272a 1px, transparent 1px)",
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
                 }
             }
         }
     </script>
-
+    
     <style>
-        body {
-            background-color: #050505;
-            color: #e4e4e7;
+        body { background-color: #050505; color: #e4e4e7; }
+        html { scroll-behavior: smooth; }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .text-stroke {
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-            color: transparent;
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
+        
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(197, 160, 89, 0.8);
+            }
         }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
         }
-        /* Smooth scrolling for the whole page */
-        html {
-            scroll-behavior: smooth;
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        /* Markdown styles for AI responses */
-        .prose-invert strong { color: #C5A059; font-weight: 600; }
-        .prose-invert ul { list-style-type: disc; padding-left: 1.5em; margin: 0.5em 0; }
-        .prose-invert p { margin-bottom: 0.5em; }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .glow-pulse {
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        
+        .scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        /* Staggered animations */
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+        
+        /* Hero section */
+        .hero-title {
+            animation: glowPulse 4s ease-in-out infinite;
+        }
+        
+        .hero-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.3);
+            border-color: #C5A059;
+            color: #050505;
+            background-color: #C5A059;
+        }
+        
+        /* Service cards */
+        .service-card {
+            position: relative;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #C5A059;
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.15);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* CTA button */
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.6s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(197, 160, 89, 0.3);
+        }
+        
+        .cta-button:hover::after {
+            left: 100%;
+        }
+        
+        /* Stats section */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #C5A059;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Intersection observer for scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="https://i.ibb.co/FbnbJNck/2logo.png" alt="SUCILA GROUP" class="h-10 md:h-12 w-auto">
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex gap-12 text-sm font-medium tracking-wide uppercase items-center">
+                <a href="index.html" data-nav-link class="hover:text-brand-gold transition-colors">
+                    Home
+                </a>
+                <a href="projects.html" data-nav-link class="hover:text-brand-gold transition-colors">
+                    Projects
+                </a>
+                <a href="services.html" data-nav-link class="hover:text-brand-gold transition-colors">
+                    Services
+                </a>
+                <a href="contact.html" data-nav-link class="hover:text-brand-gold transition-colors">
+                    Contact
+                </a>
+                
+                <!-- Language Selector -->
+                <div class="flex items-center gap-2 ml-8 pl-8 border-l border-zinc-700">
+                    <span class="px-2 py-1 rounded text-sm bg-white/20">🇺🇸</span>
+                    <a href="index-es.html" title="Español" class="px-2 py-1 rounded text-sm hover:bg-white/20 transition-all">🇪🇸</a>
+                    <a href="index-de.html" title="Deutsch" class="px-2 py-1 rounded text-sm hover:bg-white/20 transition-all">🇩🇪</a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button data-menu-toggle class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div data-mobile-menu class="hidden fixed inset-0 top-20 bg-black z-40 p-6 flex flex-col gap-8 md:hidden">
+            <a href="index.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">
+                Home
+            </a>
+            <a href="projects.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">
+                Projects
+            </a>
+            <a href="services.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">
+                Services
+            </a>
+            <a href="contact.html" data-nav-link class="text-3xl font-display font-bold text-white hover:text-brand-gold">
+                Contact
+            </a>
+            
+            <div class="mt-6 pt-6 border-t border-zinc-700 flex gap-3">
+                <span class="px-3 py-2 rounded text-lg bg-white/20">🇺🇸</span>
+                <a href="index-es.html" title="Español" class="px-3 py-2 rounded text-lg hover:bg-white/20 transition-all">🇪🇸</a>
+                <a href="index-de.html" title="Deutsch" class="px-3 py-2 rounded text-lg hover:bg-white/20 transition-all">🇩🇪</a>
+            </div>
+        </div>
+    </nav>
 
-    <script src="js/shared.js" type="text/babel"></script>
-    <script src="js/index.js" type="text/babel"></script>
+    <!-- Hero Section -->
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2942&auto=format&fit=crop" 
+                 class="w-full h-full object-cover brightness-[0.4]" alt="Luxury Villa">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6">
+            <p class="text-brand-gold uppercase tracking-[0.4em] text-xs md:text-sm font-bold mb-6 fade-in-up">Est. 2018</p>
+            <h1 class="font-display font-bold text-5xl md:text-8xl text-white mb-8 tracking-tight hero-title fade-in-up" style="animation-delay: 0.2s;">
+                MASTERY IN FORM & FUNCTION
+            </h1>
+            <p class="text-zinc-300 text-lg md:text-xl max-w-3xl mx-auto mb-8 fade-in-up" style="animation-delay: 0.3s;">
+                Crafting architectural excellence through precision, innovation, and unwavering commitment to luxury residential projects.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up" style="animation-delay: 0.4s;">
+                <a href="projects.html" class="inline-block hero-button px-8 py-4 border border-white/20 text-white uppercase tracking-widest text-xs font-semibold hover:text-black transition-all">
+                    View Projects
+                </a>
+                <a href="contact.html" class="inline-block cta-button px-8 py-4 bg-brand-gold text-black uppercase tracking-widest text-xs font-semibold hover:bg-white transition-all">
+                    Start a Project
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="py-32 px-6 bg-brand-dark relative overflow-hidden">
+        <!-- Background accents -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 scroll-animate">
+                <p class="text-brand-gold uppercase tracking-widest text-xs font-bold mb-2">Our Expertise</p>
+                <h2 class="font-display text-4xl md:text-5xl text-white">Capabilities</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="service-card md:col-span-2 relative group overflow-hidden border border-zinc-800 bg-zinc-900/50 backdrop-blur p-12 min-h-80 flex flex-col justify-between hover:bg-zinc-800/50 transition-colors">
+                    <div>
+                        <h3 class="font-display text-3xl text-white mb-4">Residential Construction</h3>
+                        <p class="text-zinc-300 max-w-2xl leading-relaxed">From foundation to final handover. We orchestrate every phase of luxury villa development with meticulous precision, sourcing premium materials and managing complex timelines.</p>
+                    </div>
+                    <div class="text-zinc-500 text-sm">From foundation to final handover</div>
+                </div>
+                
+                <div class="service-card relative group overflow-hidden border border-zinc-800 bg-zinc-900/50 backdrop-blur p-8 flex flex-col justify-between hover:bg-zinc-800/50 transition-colors">
+                    <h3 class="font-display text-xl text-white">Architectural Design</h3>
+                    <p class="text-zinc-400 text-sm mt-4">Blueprint to BIM visualization with precision. Cutting-edge rendering and technical documentation.</p>
+                </div>
+                
+                <div class="service-card relative group overflow-hidden border border-zinc-800 bg-zinc-900/50 backdrop-blur p-8 flex flex-col justify-between hover:bg-zinc-800/50 transition-colors">
+                    <h3 class="font-display text-xl text-white">Project Management</h3>
+                    <p class="text-zinc-400 text-sm mt-4">Complete oversight from concept to completion. Schedule, budget, and quality control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-brand-panel border-t border-brand-border relative overflow-hidden">
+        <!-- Accent lights -->
+        <div class="absolute top-1/2 right-0 w-72 h-72 bg-brand-gold/10 rounded-full blur-3xl -z-10 transform translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-display text-4xl md:text-5xl text-white mb-6 scroll-animate">READY TO BUILD?</h2>
+            <p class="text-zinc-300 max-w-2xl mx-auto mb-8 scroll-animate">From initial concept to final handover, our team is ready to bring your vision to life with precision and luxury craftsmanship.</p>
+            <a href="contact.html" class="inline-block cta-button px-8 py-4 bg-brand-gold text-black font-bold uppercase tracking-widest hover:bg-white transition-all scroll-animate">
+                Start a Conversation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-panel border-t border-brand-border py-16 px-6">
+        <div class="max-w-7xl mx-auto text-center text-zinc-500 text-sm">
+            <p>© 2025 SUCILA GROUP. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/nav-simple.js"></script>
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Count animation for stats (if added later)
+        function animateCount(element, target, duration = 2000) {
+            let current = 0;
+            const increment = target / (duration / 16);
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = Math.floor(target);
+                    clearInterval(counter);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+    </script>
 </body>
 </html>
