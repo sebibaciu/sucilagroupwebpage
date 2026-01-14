@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "title": { "en": "Villa Onyx", "es": "Villa Ónix", "de": "Villa Onyx" },
+        "category": { "en": "Luxury Residential", "es": "Residencial de Lujo", "de": "Luxus-Wohnbau" },
+        "location": "Gran Canaria, Spain",
+        "year": "2024",
+        "size": "850 m²",
+        "materials": { 
+            "en": "Black Marble, Exposed Concrete", 
+            "es": "Mármol Negro, Hormigón Visto", 
+            "de": "Schwarzer Marmor, Sichtbeton" 
+        },
+        "description": {
+            "en": "A monolithic structure carved into the hillside...",
+            "es": "Una estructura monolítica tallada en la ladera...",
+            "de": "Eine monolithische Struktur, in den Hang gehauen..."
+        },
+        "coverImage": "https://i.ibb.co/rKYkzTs7/Whats-App-Image-2025-11-09-at-15-18-55-1.jpg",
+        "gallery": [
+            "https://i.ibb.co/7dCYmXBp/Whats-App-Image-2025-11-09-at-15-18-55-2.jpg",
+            "https://i.ibb.co/ns8dbfTm/Whats-App-Image-2025-11-09-at-15-18-55.jpg"
+        ]
+    }
+]
