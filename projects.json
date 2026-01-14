@@ -1,25 +1,90 @@
 [
     {
         "id": 1,
-        "title": { "en": "Villa Onyx", "es": "Villa Ónix", "de": "Villa Onyx" },
-        "category": { "en": "Luxury Residential", "es": "Residencial de Lujo", "de": "Luxus-Wohnbau" },
-        "location": "Gran Canaria, Spain",
+        "title": {
+            "en": "Villa Onyx",
+            "es": "Villa Ónix",
+            "de": "Villa Onyx"
+        },
+        "category": {
+            "en": "Luxury Residential",
+            "es": "Residencial de Lujo",
+            "de": "Luxus-Wohnbau"
+        },
+        "location": "Marbella, Spain",
         "year": "2024",
         "size": "850 m²",
-        "materials": { 
-            "en": "Black Marble, Exposed Concrete", 
-            "es": "Mármol Negro, Hormigón Visto", 
-            "de": "Schwarzer Marmor, Sichtbeton" 
+        "materials": {
+            "en": "Black Marble, Exposed Concrete",
+            "es": "Mármol Negro, Hormigón Visto",
+            "de": "Schwarzer Marmor, Sichtbeton"
         },
         "description": {
-            "en": "A monolithic structure carved into the hillside...",
-            "es": "Una estructura monolítica tallada en la ladera...",
-            "de": "Eine monolithische Struktur, in den Hang gehauen..."
+            "en": "A monolithic structure carved into the hillside, offering panoramic Mediterranean views.",
+            "es": "Una estructura monolítica tallada en la ladera, con vistas panorámicas al Mediterráneo.",
+            "de": "Ein monolithisches Gebäude, in den Hang gebaut, mit Panoramablick auf das Mittelmeer."
         },
-        "coverImage": "https://i.ibb.co/rKYkzTs7/Whats-App-Image-2025-11-09-at-15-18-55-1.jpg",
+        "coverImage": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2000",
         "gallery": [
-            "https://i.ibb.co/7dCYmXBp/Whats-App-Image-2025-11-09-at-15-18-55-2.jpg",
-            "https://i.ibb.co/ns8dbfTm/Whats-App-Image-2025-11-09-at-15-18-55.jpg"
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000"
         ]
+    },
+    {
+        "id": 2,
+        "title": {
+            "en": "The Zenith Plaza",
+            "es": "Plaza Zenith",
+            "de": "Zenith Plaza"
+        },
+        "category": {
+            "en": "Commercial",
+            "es": "Comercial",
+            "de": "Gewerbebau"
+        },
+        "location": "Cluj-Napoca, Romania",
+        "year": "2023",
+        "size": "12,400 m²",
+        "materials": {
+            "en": "Glass, Steel, Limestone",
+            "es": "Vidrio, Acero, Caliza",
+            "de": "Glas, Stahl, Kalkstein"
+        },
+        "description": {
+            "en": "A sustainable office complex integrating vertical gardens and smart glass technology.",
+            "es": "Un complejo de oficinas sostenible que integra jardines verticales y tecnología de vidrio inteligente.",
+            "de": "Ein nachhaltiger Bürokomplex mit vertikalen Gärten und intelligenter Glastechnologie."
+        },
+        "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000",
+        "gallery": [
+            "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000"
+        ]
+    },
+    {
+        "id": 3,
+        "title": {
+            "en": "Nordic Retreat",
+            "es": "Refugio Nórdico",
+            "de": "Nordisches Refugium"
+        },
+        "category": {
+            "en": "Residential",
+            "es": "Residencial",
+            "de": "Wohnbau"
+        },
+        "location": "Transylvania, Romania",
+        "year": "2022",
+        "size": "320 m²",
+        "materials": {
+            "en": "Reclaimed Wood, Slate",
+            "es": "Madera Recuperada, Pizarra",
+            "de": "Altholz, Schiefer"
+        },
+        "description": {
+            "en": "A minimalist cabin design blending traditional craftsmanship with modern ergonomics.",
+            "es": "Una cabaña minimalista que combina artesanía tradicional con ergonomía moderna.",
+            "de": "Eine minimalistische Hütte, die traditionelle Handwerkskunst mit moderner Ergonomie verbindet."
+        },
+        "coverImage": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=2000",
+        "gallery": []
     }
 ]

@@ -7,95 +7,142 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = { theme: { extend: { fontFamily: { serif: ['Cormorant Garamond', 'serif'], sans: ['Inter', 'sans-serif'] }, colors: { brand: { gold: '#C5A059', dark: '#0A0A0A', border: '#262626' } } } } }
+        tailwind.config = { theme: { extend: { fontFamily: { serif: ['Cormorant Garamond', 'serif'], sans: ['Inter', 'sans-serif'] }, colors: { brand: { gold: '#C5A059', dark: '#0A0A0A', border: '#262626', panel: '#111111' } } } } }
     </script>
     <style>
         body { background-color: #0A0A0A; color: #E5E4E2; padding-bottom: 70px; }
         @media (min-width: 768px) { body { padding-bottom: 0; } }
         .glass-effect { background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        .fade-in-up { animation: fadeInUp 1.2s ease-out forwards; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .lang-btn.active { color: #C5A059; font-weight: bold; }
-        .mobile-link.active { color: #C5A059; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="font-sans">
     <!-- TOP NAVIGATION -->
-    <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-brand-border">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+    <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-brand-border h-20">
+        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
-                <img src="https://i.ibb.co/FbnbJNck/2logo.png" alt="SUCILA" class="h-10 md:h-12 w-auto">
+                <img src="https://i.ibb.co/FbnbJNck/2logo.png" alt="SUCILA" class="h-10">
                 <div class="leading-none">
                     <span class="block text-white font-serif font-bold text-lg tracking-widest uppercase">SUCILA</span>
                     <span class="block text-brand-gold text-[10px] uppercase tracking-[0.3em] mt-1 font-semibold">GROUP INVEST</span>
                 </div>
             </a>
-
-            <div class="flex items-center gap-4 md:gap-10">
-                <!-- Desktop Links -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="index.html" data-i18n="nav_home" class="text-[11px] uppercase tracking-[0.2em] text-white hover:text-brand-gold transition-colors">Home</a>
-                    <a href="projects.html" data-i18n="nav_projects" class="text-[11px] uppercase tracking-[0.2em] text-white hover:text-brand-gold transition-colors">Projects</a>
-                    <a href="services.html" data-i18n="nav_services" class="text-[11px] uppercase tracking-[0.2em] text-brand-gold font-bold">Services</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a href="index.html" data-i18n="nav_home" class="text-[11px] uppercase tracking-[0.2em] hover:text-brand-gold transition-colors">Home</a>
+                <a href="projects.html" data-i18n="nav_projects" class="text-[11px] uppercase tracking-[0.2em] hover:text-brand-gold transition-colors">Projects</a>
+                <a href="services.html" data-i18n="nav_services" class="text-[11px] uppercase tracking-[0.2em] text-brand-gold font-bold">Services</a>
+                <a href="contact.html" data-i18n="nav_contact" class="text-[11px] uppercase tracking-[0.2em] hover:text-brand-gold transition-colors">Contact</a>
+                <div class="flex gap-2 text-[10px] border-l border-brand-border pl-8 text-zinc-500">
+                    <button onclick="setLanguage('en')" id="lang-en" class="lang-btn">EN</button>
+                    <button onclick="setLanguage('es')" id="lang-es" class="lang-btn">ES</button>
+                    <button onclick="setLanguage('de')" id="lang-de" class="lang-btn">DE</button>
                 </div>
-                
-                <!-- Language Switcher -->
-                <div class="flex items-center gap-2 border-l border-brand-border pl-4 md:pl-8 text-[10px] uppercase tracking-widest text-zinc-500">
-                    <button onclick="setLanguage('en')" id="lang-en" class="lang-btn hover:text-white transition-colors">EN</button>
-                    <span>|</span>
-                    <button onclick="setLanguage('es')" id="lang-es" class="lang-btn hover:text-white transition-colors">ES</button>
-                    <span>|</span>
-                    <button onclick="setLanguage('de')" id="lang-de" class="lang-btn hover:text-white transition-colors">DE</button>
-                </div>
-
-                <a href="contact.html" data-i18n="nav_inquiry" class="hidden md:block px-6 py-2 border border-brand-gold text-brand-gold text-[11px] uppercase tracking-[0.2em] hover:bg-brand-gold hover:text-black transition-all font-bold">Inquiry</a>
             </div>
         </div>
     </nav>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
-    <div class="fixed bottom-0 left-0 w-full h-[70px] glass-effect border-t border-brand-border z-[200] flex md:hidden items-center justify-around px-4">
-        <a href="index.html" class="mobile-link flex flex-col items-center gap-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span data-i18n="nav_home" class="text-[9px] uppercase tracking-widest font-bold">Home</span>
-        </a>
-        <a href="projects.html" class="mobile-link text-white flex flex-col items-center gap-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            <span data-i18n="nav_projects" class="text-[9px] uppercase tracking-widest font-bold">Projects</span>
-        </a>
-        <a href="services.html" class="mobile-link active flex flex-col items-center gap-1 text-brand-gold">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
-            <span data-i18n="nav_services" class="text-[9px] uppercase tracking-widest font-bold">Services</span>
-        </a>
-        <a href="contact.html" class="mobile-link text-white flex flex-col items-center gap-1">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span data-i18n="nav_contact" class="text-[9px] uppercase tracking-widest font-bold">Contact</span>
-        </a>
-    </div>
+    <main class="pt-40 pb-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-24 reveal">
+            <span data-i18n="serv_sub" class="text-brand-gold text-[10px] tracking-[0.5em] font-bold uppercase">Our Capabilities</span>
+            <h1 data-i18n="serv_title" class="text-6xl md:text-8xl font-serif italic mt-4">Expertise</h1>
+        </div>
 
-    <main class="pt-32 px-6 max-w-4xl mx-auto text-center">
-        <span data-i18n="serv_sub" class="text-brand-gold text-[10px] tracking-[0.5em] font-bold">Capabilities</span>
-        <h1 data-i18n="serv_title" class="text-6xl font-serif italic mt-4 mb-16">Expertise</h1>
-        <div class="space-y-12 text-left">
-            <div class="border-t border-zinc-800 pt-8">
-                <h3 data-i18n="s1_t" class="text-2xl font-serif italic mb-2">Architectural Design</h3>
-                <p data-i18n="s1_d" class="text-zinc-500 text-sm">Full blueprinting and 3D visualization for premium estates.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-brand-border border border-brand-border reveal">
+            <!-- Service 1 -->
+            <div class="bg-brand-dark p-12 hover:bg-brand-panel transition-colors group">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block mb-6">01</span>
+                <h3 data-i18n="s1_t" class="text-3xl font-serif mb-6">Architectural Design</h3>
+                <p data-i18n="s1_d" class="text-zinc-400 leading-relaxed text-sm">Translating client aspirations into spatial reality. We specialize in luxury residential and commercial hubs.</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="bg-brand-dark p-12 hover:bg-brand-panel transition-colors group">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block mb-6">02</span>
+                <h3 data-i18n="s2_t" class="text-3xl font-serif mb-6">Technical Engineering</h3>
+                <p data-i18n="s2_d" class="text-zinc-400 leading-relaxed text-sm">Structural integrity meets aesthetic fluidity. Our team ensures design is optimized for efficiency.</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="bg-brand-dark p-12 hover:bg-brand-panel transition-colors group">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block mb-6">03</span>
+                <h3 data-i18n="s3_t" class="text-3xl font-serif mb-6">Project Management</h3>
+                <p data-i18n="s3_d" class="text-zinc-400 leading-relaxed text-sm">From permits to final handovers, we manage timelines and budgets with absolute transparency.</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="bg-brand-dark p-12 hover:bg-brand-panel transition-colors group">
+                <span class="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase block mb-6">04</span>
+                <h3 data-i18n="s4_t" class="text-3xl font-serif mb-6">Investment Advisory</h3>
+                <p data-i18n="s4_d" class="text-zinc-400 leading-relaxed text-sm">Maximize ROI through smart design. We advise on high-yield opportunities in emerging markets.</p>
             </div>
         </div>
     </main>
 
+    <!-- MOBILE NAV -->
+    <div class="fixed bottom-0 left-0 w-full h-[70px] glass-effect border-t border-brand-border z-[200] flex md:hidden items-center justify-around">
+        <a href="index.html" class="flex flex-col items-center gap-1 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            <span data-i18n="nav_home" class="text-[9px] uppercase font-bold tracking-widest">Home</span>
+        </a>
+        <a href="projects.html" class="flex flex-col items-center gap-1 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span data-i18n="nav_projects" class="text-[9px] uppercase font-bold tracking-widest">Projects</span>
+        </a>
+        <a href="services.html" class="flex flex-col items-center gap-1 text-brand-gold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+            <span data-i18n="nav_services" class="text-[9px] uppercase font-bold tracking-widest">Services</span>
+        </a>
+        <a href="contact.html" class="flex flex-col items-center gap-1 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span data-i18n="nav_contact" class="text-[9px] uppercase font-bold tracking-widest">Contact</span>
+        </a>
+    </div>
+
     <script>
         const translations = {
-            en: { nav_home: "Home", nav_projects: "Projects", nav_services: "Services", nav_contact: "Contact", serv_sub: "Capabilities", serv_title: "Expertise", s1_t: "Architectural Design", s1_d: "Full blueprinting and 3D visualization for premium estates." },
-            es: { nav_home: "Inicio", nav_projects: "Proyectos", nav_services: "Servicios", nav_contact: "Contacto", serv_sub: "Capacidades", serv_title: "Experiencia", s1_t: "Diseño Arquitectónico", s1_d: "Planos completos y visualización 3D para fincas premium." },
-            de: { nav_home: "Startseite", nav_projects: "Projekte", nav_services: "Leistungen", nav_contact: "Kontakt", serv_sub: "Kompetenzen", serv_title: "Fachwissen", s1_t: "Architekturdesign", s1_d: "Vollständige Blaupausen und 3D-Visualisierung für Luxusimmobilien." }
+            en: { 
+                nav_home: "Home", nav_projects: "Projects", nav_services: "Services", nav_contact: "Contact",
+                serv_sub: "Our Capabilities", serv_title: "Expertise",
+                s1_t: "Architectural Design", s1_d: "Translating client aspirations into spatial reality. We specialize in luxury residential and commercial hubs.",
+                s2_t: "Technical Engineering", s2_d: "Structural integrity meets aesthetic fluidity. Our team ensures design is optimized for efficiency.",
+                s3_t: "Project Management", s3_d: "From permits to final handovers, we manage timelines and budgets with absolute transparency.",
+                s4_t: "Investment Advisory", s4_d: "Maximize ROI through smart design. We advise on high-yield opportunities in emerging markets."
+            },
+            es: { 
+                nav_home: "Inicio", nav_projects: "Proyectos", nav_services: "Servicios", nav_contact: "Contacto",
+                serv_sub: "Nuestras Capacidades", serv_title: "Experiencia",
+                s1_t: "Diseño Arquitectónico", s1_d: "Traduciendo aspiraciones en realidad espacial. Especialistas en residencial de lujo.",
+                s2_t: "Ingeniería Técnica", s2_d: "La integridad estructural se une a la estética. Optimizamos cada diseño.",
+                s3_t: "Gestión de Proyectos", s3_d: "Desde permisos hasta entregas, gestionamos plazos y presupuestos con total transparencia.",
+                s4_t: "Asesoría de Inversión", s4_d: "Maximice el ROI mediante diseño inteligente. Asesoramos en oportunidades de alto rendimiento."
+            },
+            de: { 
+                nav_home: "Startseite", nav_projects: "Projekte", nav_services: "Leistungen", nav_contact: "Kontakt",
+                serv_sub: "Unsere Kompetenzen", serv_title: "Fachwissen",
+                s1_t: "Architekturdesign", s1_d: "Wir verwandeln Visionen in Raum. Spezialisiert auf Luxuswohn- und Gewerbebau.",
+                s2_t: "Technische Planung", s2_d: "Strukturelle Integrität trifft auf Ästhetik. Unser Team optimiert jedes Design.",
+                s3_t: "Projektmanagement", s3_d: "Von der Genehmigung bis zur Übergabe steuern wir Termine und Budgets transparent.",
+                s4_t: "Investmentberatung", s4_d: "Maximieren Sie den ROI durch smartes Design. Wir beraten zu renditestarken Chancen."
+            }
         };
-        function setLanguage(lang) { localStorage.setItem('sucila_lang', lang); updateUI(lang); }
-        function updateUI(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (translations[lang][key]) el.innerHTML = translations[lang][key]; });
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`lang-${lang}`).classList.add('active');
+
+        function setLanguage(lang) {
+            localStorage.setItem('sucila_lang', lang);
+            updateUI(lang);
         }
+
+        function updateUI(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) el.innerText = translations[lang][key];
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.id === `lang-${lang}`));
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.addEventListener('DOMContentLoaded', () => updateUI(localStorage.getItem('sucila_lang') || 'en'));
     </script>
 </body>
